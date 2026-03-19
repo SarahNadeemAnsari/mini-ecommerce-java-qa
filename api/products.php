@@ -1,34 +1,47 @@
 <?php
-// products.php
+header('Content-Type: application/json; charset=utf-8');
 
-header('Content-Type: application/json');
+$limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 0;
+$id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
-// Database connection
-$host = "localhost";
-$user = "root";
-$password = "";
-$dbname = "mini_ecommerce";
+try {
+    $pdo = new PDO('mysql:host=127.0.0.1;dbname=mini_ecommerce;charset=utf8', 'root', '');
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$conn = new mysqli($host, $user, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die(json_encode(["error" => "Database connection failed"]));
-}
-
-// Fetch products
-$sql = "SELECT id, name, price, description, stock, image_url FROM products";
-$result = $conn->query($sql);
-
-$products = [];
-
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        $products[] = $row;
+    if ($id > 0) {
+        $sql = 'SELECT * FROM products WHERE id = :id LIMIT 1';
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } else {
+        $sql = 'SELECT * FROM products';
+        if ($limit > 0) $sql .= ' LIMIT :limit';
+        $stmt = $pdo->prepare($sql);
+        if ($limit > 0) $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+        $stmt->execute();
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    // Normalize image field names to "image" and "image_url"
+    foreach ($rows as &$r) {
+        if (!isset($r['image']) || !$r['image']) {
+            if (isset($r['image_url']) && $r['image_url']) $r['image'] = $r['image_url'];
+            elseif (isset($r['image_path'])) $r['image'] = $r['image_path'];
+            elseif (isset($r['img'])) $r['image'] = $r['img'];
+            else $r['image'] = null;
+        }
+        if (!isset($r['image_url']) || !$r['image_url']) {
+            $r['image_url'] = $r['image'];
+        }
+    }
+    // If single id requested, return single object
+    if ($id > 0) {
+        echo json_encode(isset($rows[0]) ? $rows[0] : null);
+    } else {
+        echo json_encode($rows);
+    }
+} catch (Exception $e) {
+    http_response_code(500);
+    echo json_encode(['error' => $e->getMessage()]);
 }
-
-// Output JSON
-echo json_encode($products);
-
-$conn->close();

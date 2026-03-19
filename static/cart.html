@@ -1,40 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Cart</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="utf-8">
+  <title>Cart — MiniShop</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/cart.css">
 </head>
 <body>
-
 <header class="navbar">
-  <h2>MiniShop</h2>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="products.html">Products</a>
-    <a href="cart.html">Cart</a>
-    <a href="login.html">Login</a>
-  </nav>
+  <div class="container">
+    <h2 class="brand">MiniShop</h2>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="cart.html" class="active">Cart</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </div>
 </header>
 
 <main>
-  <h1 class="page-title">Your Cart</h1>
+  <div class="container cart-page">
+    <h1>Your Cart</h1>
 
-  <div class="cart-item">
-    <h3>Laptop</h3>
-    <div class="qty">
-      <button>-</button>
-      <span>1</span>
-      <button>+</button>
+    <div id="cart-empty" class="kv">Your cart is empty.</div>
+
+    <div class="cart-grid" id="cart-grid" style="display:none">
+      <div class="cart-items" id="cart-items"></div>
+
+      <aside class="cart-summary">
+        <div class="summary-card">
+          <h3>Order Summary</h3>
+          <div class="summary-row"><span>Items:</span><span id="summary-count">0</span></div>
+          <div class="summary-row"><span>Subtotal:</span><span id="summary-sub">Rs 0.00</span></div>
+          <div class="summary-row"><span>Shipping:</span><span id="summary-ship">Rs 0.00</span></div>
+          <div class="summary-row total"><span>Total:</span><span id="summary-total">Rs 0.00</span></div>
+          <button id="checkout-btn" class="btn">Proceed to Checkout</button>
+          <button id="clear-btn" class="btn ghost">Clear Cart</button>
+        </div>
+      </aside>
     </div>
-    <p>$10</p>
   </div>
-
-  <button class="btn checkout">Checkout</button>
 </main>
 
+<footer class="footer">
+  <div class="container">
+    <p>© MiniShop — Simple e-commerce demo</p>
+  </div>
+</footer>
+
+<script src="js/nav.js"></script>
+<script src="js/cart.js"></script>
 </body>
 </html>

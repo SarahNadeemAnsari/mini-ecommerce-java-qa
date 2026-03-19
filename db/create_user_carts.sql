@@ -1,0 +1,6 @@
+-- Stores per-user cart JSON
+CREATE TABLE IF NOT EXISTS user_carts (
+  user_id INT PRIMARY KEY,
+  cart_json TEXT,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);

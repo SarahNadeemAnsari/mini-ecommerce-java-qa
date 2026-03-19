@@ -6,26 +6,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/products.css">
 </head>
 <body>
 
 <header class="navbar">
-  <h2>MiniShop</h2>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="products.html">Products</a>
-    <a href="cart.html">Cart</a>
-    <a href="login.html">Login</a>
-  </nav>
+  <div class="container">
+    <h2 class="brand">MiniShop</h2>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="products.html" class="active">Products</a>
+      <a href="cart.html">Cart</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </div>
 </header>
 
 <main>
-  <h1>Products</h1>
-  <div id="products-container"></div>
+  <div class="container products-hero">
+    <h1>Products</h1>
+    <p class="kv">Browse all items — click a card for details.</p>
+  </div>
+
+  <div class="container products-grid-wrap">
+    <!-- optional sidebar could go here in future -->
+    <div id="products-container" class="products-list"></div>
+  </div>
 </main>
 
-<!-- THIS is critical -->
-<script src="js/script.js"></script>
+<footer class="footer">
+  <div class="container">
+    <p>© MiniShop — Simple e-commerce demo</p>
+  </div>
+</footer>
 
+<script src="js/nav.js"></script>
+<script src="js/script.js"></script>
+<!-- if you have page-specific scripts add them after -->
 </body>
 </html>

@@ -2,30 +2,66 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Mini E-Commerce</title>
+  <title>Mini E-Commerce — Home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
 
 <header class="navbar">
-  <h2>MiniShop</h2>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="products.html">Products</a>
-    <a href="cart.html">Cart</a>
-    <a href="login.html">Login</a>
-  </nav>
+  <div class="container">
+    <h2 class="brand">MiniShop</h2>
+    <nav>
+      <a href="index.html" class="active">Home</a>
+      <a href="products.html">Products</a>
+      <a href="cart.html">Cart</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </div>
 </header>
 
 <main>
-  <h1>Products</h1>
-  <div id="products-container"></div>
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <h1>Quality products. Fast delivery.</h1>
+        <p>Discover curated items handpicked for you — great prices, trusted sellers.</p>
+        <a class="btn" href="products.html">Shop Now</a>
+      </div>
+      <div class="hero-image">
+        <img src="https://imagenes.elpais.com/resizer/v2/3XVOVO7OWJE3XADYWXIBWNCXW4.jpg?auth=c89ed0d5ee739f44789ab2380c13ffc964a6050272c800a6bcb93ba9496894a8&width=1960&height=1103&focal=1970%2C1154" alt="Shop hero">
+      </div>
+    </div>
+  </section>
+
+  <section class="features container">
+    <div class="feature">
+      <h3>Free Shipping</h3>
+      <p>On orders over $50.</p>
+    </div>
+    <div class="feature">
+      <h3>Secure Payments</h3>
+      <p>Encrypted and safe checkout.</p>
+    </div>
+    <div class="feature">
+      <h3>24/7 Support</h3>
+      <p>We're here to help.</p>
+    </div>
+  </section>
+
+  <section class="featured container">
+    <h2>Featured Products</h2>
+    <div id="featured-products" class="grid"></div>
+  </section>
 </main>
 
-<!-- THIS is critical -->
-<script src="js/script.js"></script>
+<footer class="footer">
+  <div class="container">
+    <p>© MiniShop — Simple e-commerce demo</p>
+  </div>
+</footer>
 
+<script src="js/nav.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>

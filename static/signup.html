@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Login — MiniShop</title>
+  <title>Sign Up — MiniShop</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="css/index.css">
   <link rel="stylesheet" href="css/login.css">
@@ -15,7 +15,7 @@
       <a href="index.html">Home</a>
       <a href="products.html">Products</a>
       <a href="cart.html">Cart</a>
-      <a href="login.html" class="active">Login</a>
+      <a href="login.html">Login</a>
     </nav>
   </div>
 </header>
@@ -23,17 +23,23 @@
 <main>
   <div class="container" style="padding:36px 20px;">
     <div class="login-card">
-      <h2>Sign in to MiniShop</h2>
-      <form id="login-form">
+      <h2>Create Account</h2>
+      <form id="signup-form">
+        <label>Username
+          <input id="username" type="text" required />
+        </label>
         <label>Email
           <input id="email" type="email" required />
         </label>
         <label>Password
           <input id="password" type="password" required />
         </label>
-        <button class="btn" type="submit">Sign in</button>
+        <label>Confirm Password
+          <input id="password-confirm" type="password" required />
+        </label>
+        <button class="btn" type="submit">Create Account</button>
       </form>
-      <p class="kv">This demo signs you in locally (no server). Your cart will be preserved.</p>
+      <p class="kv">Already have an account? <a href="login.html">Sign in</a></p>
     </div>
   </div>
 </main>
@@ -45,6 +51,6 @@
 </footer>
 
 <script src="js/nav.js"></script>
-<script src="js/login.js"></script>
+<script src="js/signup.js"></script>
 </body>
 </html>
