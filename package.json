@@ -1,0 +1,20 @@
+{
+  "name": "mini-ecommerce-java-qa",
+  "version": "1.0.0",
+  "private": true,
+  "description": "QA automation project for MiniShop",
+  "scripts": {
+    "test:e2e": "npx playwright test",
+    "test:e2e:headed": "npx playwright test --headed",
+    "test:e2e:chromium": "npx playwright test --project=chromium",
+    "test:e2e:all": "npx playwright test --project=chromium --project=firefox --project=webkit",
+    "test:e2e:mobile": "npx playwright test --project=\"Mobile Chrome\"",
+    "test:e2e:report": "npx playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "@types/node": "^26.4.1",
+    "playwright": "^1.62.1",
+    "typescript": "^7.0.2"
+  }
+}
